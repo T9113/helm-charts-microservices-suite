@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "microservice.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "microservice.name" . }}
+  endpoints:
+  - port: metrics
+    interval: 15s
